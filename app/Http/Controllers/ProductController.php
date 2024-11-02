@@ -15,8 +15,8 @@ class ProductController extends Controller
 
         // $cards = Test::withTrashed()->get();
         
-        $cards = Test::get();
-        $trashed = Test::onlyTrashed()->get();
+        $cards = Test::orderBy('name')->get();
+        $trashed = Test::orderBy('name')->onlyTrashed()->get();
 
         // if ($cards->trashed()) {
             return view('product.index', compact('cards','trashed'));
@@ -37,15 +37,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+       $data= $request->validate([
+            'name' => 'required|string|min:3|max:10',
+            'description' => 'required|string|min:3|max:100'
         ]);
 
-        Test::create([
-            'name' => $request->name,
-            'description' => $request->description
-        ]);
+        // Test::create([
+        //     'name' => $request->name,
+        //     'description' => $request->description
+        // ]);
+
+        Test::create($data);
 
         return redirect()->route('product.index')->with('success', 'Product created successfully.');
     }
@@ -74,16 +76,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required'
+        $data=$request->validate([
+            'name' => 'required|string|min:3|max:10',
+            'description' => 'required|string|min:3|max:100'
+        ],[],[
+            'name' => 'Name Cell',
+            'description' => 'Description data'
         ]);
 
-        $card= Test::where('id',$id)->update([
-            'name' => $request->name,
-            'description' => $request->description 
-        ]);
-
+        $card= Test::where('id',$id)->update($data);
         return redirect()->route('product.show',$id)->with('success', 'Product updated successfully.');
 
     }

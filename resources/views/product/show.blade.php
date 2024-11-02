@@ -18,8 +18,8 @@
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body text-center">
-                            <h5 class="card-title">{{ $card->name }}</h5>
-                            <p class="card-text">{{ $card->description }}</p>
+                            <h5 class="card-title">{!! $card->name !!}</h5>
+                            <p class="card-text">{!! $card->description !!}</p>
 
                             <!-- Buttons -->
                             <div class="d-flex justify-content-center gap-2 mt-3">

@@ -31,8 +31,8 @@
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card">
                             <div class="card-body text-center">
-                                <h5 class="card-title">{!! $card->name !!}</h5>
-                                <p class="card-text">{{ $card->description }}</p>
+                                <h5 class="card-title">{!!$card->name!!}</h5>
+                                <p class="card-text">{!! $card->description !!}</p>
                                 <div class="d-flex justify-content-center gap-2 mt-3">
 
                                     <a href="{{ route('product.create') }}"><button
@@ -64,12 +64,17 @@
                                         @method('PUT')
                                         <div class="mb-2">
                                             <label for="name" class="form-label">Name</label>
-                                            <input type="text" name="name" class="form-control"
-                                                value="{{ $card->name }}" required>
+                                            <input type="text" name="name" class="form-control" value="{{$card->plain_name}}" required>
+                                            @error('name')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                         </div>
                                         <div class="mb-2">
                                             <label for="description" class="form-label">Description</label>
-                                            <textarea name="description" class="form-control" rows="3" required>{{ $card->description }}</textarea>
+                                            <textarea name="description" class="form-control" rows="3" required>{{$card->plain_description}}</textarea>
+                                            @error('description')
+                                            <p class="text-danger">{{ $message }}</p>
+                                         @enderror
                                         </div>
                                         <button type="submit" class="btn btn-sm btn-primary mt-2">Save Changes</button>
                                     </form>
@@ -98,9 +103,9 @@
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title">{{ $trash->name }}</h5>
-                                    <p class="card-text">{{ $trash->description }}</p>
-                                    <p class="card-text">{{ $trash->deleted_at }}</p>
+                                    <h5 class="card-title">{!! $trash->name !!}</h5>
+                                    <p class="card-text">{!! $trash->description !!}</p>
+                                    <p class="card-text">{!! $trash->deleted_at !!}</p>
                                     <div class="d-flex justify-content-center gap-2 mt-3">
                                         <form action="{{ route('product.restore', $trash->id) }}" method="post">
                                             @csrf

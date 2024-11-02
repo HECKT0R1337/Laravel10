@@ -12,22 +12,33 @@ class Test extends Model
 
     protected $fillable = ['name', 'description'];
 
-
+//-----------------------------------------
     public function getnameAttribute($value)
     {
-
        $color = ($value =='Mobile') ? 'red' :'green';
         return 'Product: ' . '<span style="color:' . $color . '">' . $value . '</span>';
     }
 
-    public function getdescriptionAttribute($value)
+    public function getPlainNameAttribute()
+    {
+        return $this->attributes['name']; // Return the plain name value
+    }
+//-----------------------------------------
+
+    public function getDescriptionAttribute($value)
     {
         return 'Model: ' . $value;
     }
 
+    public function getPlainDescriptionAttribute($value)
+    {
+        return $this->attributes['description']; // Return the plain name value
+    }
+//-----------------------------------------
+
+
     public function getDeletedAtAttribute($value)
     {
-        // return 'Trashed at: '. $value;
         return  'Trashed at: ' . date('d-M h:i:s', strtotime($value));
     }
 }
