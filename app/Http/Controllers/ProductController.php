@@ -12,8 +12,16 @@ class ProductController extends Controller
      */
     public function index()
     {
+
+        // $cards = Test::withTrashed()->get();
+        
         $cards = Test::get();
-        return view('product.index', compact('cards'));
+        $trashed = Test::onlyTrashed()->get();
+
+        // if ($cards->trashed()) {
+            return view('product.index', compact('cards','trashed'));
+        // }
+
     }
 
     /**
@@ -85,7 +93,24 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
+        $del=Test::where('id',$id)->forceDelete();
+        return redirect()->route('product.index')->with('success', 'Product deleted successfully.');
+    }
+
+    public function softDelete(string $id)
+    {
         $del=Test::where('id',$id)->delete();
         return redirect()->route('product.index')->with('success', 'Product deleted successfully.');
     }
+
+    public function restore(string $id)
+    {
+        $del=Test::where('id',$id)->restore();
+        return redirect()->route('product.index')->with('success', 'Product deleted successfully.');
+    }
+
+
+    
+
+
 }

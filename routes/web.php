@@ -20,7 +20,8 @@ Route::get('/', function () {
 
 
 Route::resource('product',ProductController::class);
-
+Route::delete('product/{bla}/soft-delete', [ProductController::class, 'softDelete'])->name('product.softDelete');
+Route::post('product/{bla}/restore', [ProductController::class, 'restore'])->name('product.restore');
 
 
 /*
