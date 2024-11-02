@@ -1,3 +1,5 @@
+@extends('index')
+@section('content')
 {{-- 
 <form action="{{route('product.update',$card->id)}}" method="POST">
     @csrf
@@ -8,20 +10,6 @@
 
     <input type="submit" value='Update'>
 </form> --}}
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card with Edit Form</title>
-    <!-- Bootstrap CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
 
     <div class="container mt-5">
         <div class="text-center">
@@ -38,7 +26,7 @@
                                 <a href="{{ route('product.create') }}" class="btn btn-sm btn-success">Add</a>
                                 <button class="btn btn-sm btn-primary" data-bs-toggle="collapse"
                                     data-bs-target="">Edit</button>
-                                <button class="btn btn-sm btn-danger">Delete</button>
+                                <button class="btn btn-sm btn-danger btn-xs">Soft Delete</button>
                             </div>
 
                             <!-- Edit Form (collapsed by default) -->
@@ -70,8 +58,4 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+@endsection

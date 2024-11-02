@@ -1,3 +1,6 @@
+@extends('index')
+@section('content')
+
 {{-- @if (session()->has('success'))
     <p class="text-success">{{ session()->get('success') }}</p>
 @endif --}}
@@ -29,3 +32,13 @@
     @enderror
     <input type="submit" value='create'>
 </form>
+
+@endsection
+{{-- @endsection == @stop --}}
+
+
+@push('js')
+    <script>
+        alert('test push and stack?')
+    </script>
+@endpush
