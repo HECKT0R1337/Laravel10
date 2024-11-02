@@ -36,9 +36,29 @@
 @endsection
 {{-- @endsection == @stop --}}
 
+{{-- @once can be used only once in a view and can be used before @push to make sure there 
+will be one data push if data not changed or will be pushed if data changed. --}}
 
-@push('js')
-    <script>
-        alert('test push and stack?')
-    </script>
-@endpush
+{{-- @push and @pushOnce can be only executed on this page based on @stack at header or footer or whatever --}}
+{{-- @prepend can be executed before @stack happens with each refresh--}}
+{{-- @prependOnce can be executed before @stack happens and only one time if data not changed --}}
+
+@once
+    @push('css2')
+    <h3>Iam H3 from push</h3>
+
+        {{-- <script>
+            alert('test push and stack?')
+        </script> --}}
+    @endpush
+@endonce
+
+
+
+@prepend('css2')
+    <h3>Iam H3 from prepend</h3>
+@endprepend
+
+@prependOnce('css2')
+    <h3>Iam H3 from prependOnce</h3>
+@endprependOnce
