@@ -1,5 +1,8 @@
 @extends('index')
 @section('content')
+
+{{$myvar}}
+
     <div class="container mt-5">
         <div class="text-center">
             <div class="row justify-content-center">
