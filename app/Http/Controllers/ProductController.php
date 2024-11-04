@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        // $cards = Test::withTrashed()->get();
+        // $cards = Test::withTrashed()->get(); // this will get both together soft deleted and deleted
 
         $cards = Test::orderBy('id')->get();
         $trashed = Test::orderBy('id')->onlyTrashed()->get();

@@ -18,5 +18,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // how to use seeder without factory
+        $this->call([
+            TestSeeder::class,
+        ]);
     }
 }
+
+
+/*
+    How to Use:
+    php artisan db:seed // will run all seedrs
+    php artisan db:seed --class=TestSeeder  //will run this specific class seeder
+*/
