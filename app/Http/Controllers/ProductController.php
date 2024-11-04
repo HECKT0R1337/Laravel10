@@ -14,12 +14,12 @@ class ProductController extends Controller
     {
 
         // $cards = Test::withTrashed()->get();
-        
-        $cards = Test::orderBy('name')->get();
-        $trashed = Test::orderBy('name')->onlyTrashed()->get();
+
+        $cards = Test::orderBy('id')->get();
+        $trashed = Test::orderBy('id')->onlyTrashed()->get();
 
         // if ($cards->trashed()) {
-            return view('product.index', compact('cards','trashed'));
+        return view('product.index', compact('cards', 'trashed'));
         // }
 
     }
@@ -37,18 +37,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       $data= $request->validate([
+        $data = $request->validate([
             'name' => 'required|string|min:3|max:10',
-            'description' => 'required|string|min:3|max:100'
+            'description' => 'required|string|min:3|max:100',
+            'status' => 'required|in:enable,disable',
+            'show' => 'required|in:0,1'
         ]);
 
-        // Test::create([
-        //     'name' => $request->name,
-        //     'description' => $request->description
-        // ]);
-
         Test::create($data);
-
         return redirect()->route('product.index')->with('success', 'Product created successfully.');
     }
 
@@ -57,9 +53,9 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-    //    $card=Test::where('id',$id)->first();
-       $card=Test::findOrFail($id);
-       return view('product.show',compact('card'));
+        //    $card=Test::where('id',$id)->first();
+        $card = Test::findOrFail($id);
+        return view('product.show', compact('card'));
     }
 
     /**
@@ -67,8 +63,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $card=Test::findOrFail($id);
-        return view('product.edit',compact('card'));
+        $card = Test::findOrFail($id);
+        return view('product.edit', compact('card'));
     }
 
     /**
@@ -76,17 +72,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data=$request->validate([
+        $data = $request->validate([
             'name' => 'required|string|min:3|max:10',
-            'description' => 'required|string|min:3|max:100'
-        ],[],[
+            'description' => 'required|string|min:3|max:100',
+            'status' => 'required|in:enable,disable',
+            'show' => 'required|in:0,1'
+        ], [], [
             'name' => 'Name Cell',
             'description' => 'Description data'
         ]);
 
-        $card= Test::where('id',$id)->update($data);
-        return redirect()->route('product.show',$id)->with('success', 'Product updated successfully.');
-
+        $card = Test::where('id', $id)->update($data);
+        return redirect()->route('product.show', $id)->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -94,24 +91,19 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        $del=Test::where('id',$id)->forceDelete();
+        $del = Test::where('id', $id)->forceDelete();
         return redirect()->route('product.index')->with('success', 'Product deleted successfully.');
     }
 
     public function softDelete(string $id)
     {
-        $del=Test::where('id',$id)->delete();
+        $del = Test::where('id', $id)->delete();
         return redirect()->route('product.index')->with('success', 'Product deleted successfully.');
     }
 
     public function restore(string $id)
     {
-        $del=Test::where('id',$id)->restore();
+        $del = Test::where('id', $id)->restore();
         return redirect()->route('product.index')->with('success', 'Product deleted successfully.');
     }
-
-
-    
-
-
 }

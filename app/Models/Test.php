@@ -10,7 +10,7 @@ class Test extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description','status','show'];
 
 //-----------------------------------------
     public function getnameAttribute($value)

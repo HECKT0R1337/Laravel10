@@ -1,23 +1,13 @@
 @extends('index')
 @section('content')
-
-{{$myvar}}
-
     <div class="container mt-5">
         <div class="text-center">
             <div class="row justify-content-center">
-                <a href="{{ route('product.create') }}"><button class="btn btn-sm btn-success my-3">Create
-                        Product</button></a>
-
-                @each('product.loop1', $cards, 'card', 'product.empty')
-
-
+                <a href="{{ route('product.create') }}"><button class="btn btn-sm btn-success my-3">Create Product</button></a>
+                    @each('product.loop1', $cards, 'card', 'product.empty')
             </div>
         </div>
     </div>
-
-
-    {{-- @dd($trashed); --}}
 
     @if ($trashed !== null && $trashed->isNotEmpty())
         <hr>
@@ -26,10 +16,7 @@
         <div class="container mt-5">
             <div class="text-center">
                 <div class="row justify-content-center">
-
                     @each('product.loop2', $trashed, 'trash', 'product.empty')
-
-
                 </div>
             </div>
         </div>
