@@ -19,13 +19,17 @@ input[type="radio"] {
                 </select>
             </div>
 
+
+            <p class="card-text">Visible :{{ $card->show== 1 ?'Show':'Hide' }}</p>
+
+{{--             
             <div class="mb-2">
                 <label for="show" class="form-label">Show Data</label>
                 <input id="show"  type="radio" name="show[{{ $card->id }}]" value="1" {{ $card->show == 1 ? 'checked' : '' }} disabled >
                 <br>
                 <label for="hide" class="form-label">Hide Data</label>
                 <input id="hide"  type="radio" name="show[{{ $card->id }}]" value="0" {{ $card->show == 0 ? 'checked' : '' }} disabled >
-            </div>
+            </div> --}}
 
 
             {{-- {{$card->show==1?'checked':''}} --}}

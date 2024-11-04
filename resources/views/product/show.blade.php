@@ -10,6 +10,17 @@
                             <h5 class="card-title">{!! $card->name !!}</h5>
                             <p class="card-text">{!! $card->description !!}</p>
 
+
+                            <div class="mb-2">
+                                <label for="status" class="form-label">Status</label>
+                                <select name="status">
+                                    <option value="enable">{{ $card->status == 'enable' ? 'Enabled' : 'Disabled' }}</option>
+                                </select>
+                            </div>
+                
+                
+                            <p class="card-text">Visible :{{ $card->show== 1 ?'Show':'Hide' }}</p>
+                            
                             <!-- Buttons -->
                             <div class="d-flex justify-content-center gap-2 mt-3">
                                 <a href="{{ route('product.index') }}"><button

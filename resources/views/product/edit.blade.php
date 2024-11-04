@@ -48,9 +48,25 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+
+                                <div class="mb-2">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select name="status">
+                                        <option  id='status' value="enable">Enabled</option>
+                                        <option  id='status' value="disable">Disabled</option>
+                                    </select>
+                                </div>
+                    
+                                <div class="mb-2">
+                                    <label for="show" class="form-label">Show Data</label>
+                                    <input type="radio" name="show" value="1" id="show" {{ $card->show == 1 ? 'checked' : '' }} >
+                                    <br>
+                                    <label for="hide" class="form-label">Hide Data</label>
+                                    <input type="radio" name="show" value="0" id="hide" {{ $card->show == 0 ? 'checked' : '' }} >
+                                </div>
+
                                 <button type="submit" class="btn btn-sm btn-primary mt-2">Save Changes</button>
                             </form>
-
                         </div>
                     </div>
                 </div>

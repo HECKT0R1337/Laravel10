@@ -46,10 +46,10 @@
       
         <div class="mb-2">
             <label for="show" class="form-label">Show Data</label>
-            <input type="checkbox" name="show" value="1">
+            <input id="show" type="checkbox" name="show" value="1">
             <br>
-            <label for="show" class="form-label">Hide Data</label>
-            <input type="checkbox" name="show" value="0">
+            <label for="hide" class="form-label">Hide Data</label>
+            <input  id="hide" type="checkbox" name="show" value="0">
         </div>
       
 
