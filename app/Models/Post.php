@@ -32,6 +32,13 @@ class Post extends Model
     }
 
 
+    public function ptags(){
+        return $this->morphToMany(Ptag::class,'taggable');
+    }
+
+
+
+
 
 }
 
