@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->foreignId('supplier_id')->constrained('suppliers');
+            // $table->foreign('supplier_id')->references('id')->on('suppliers');
             $table->timestamps();
         });
     }
