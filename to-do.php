@@ -81,6 +81,9 @@ composer require laravel/ui
 //----------------------------------------------------------------------------------------
 this command below will install debugbar 
 composer require barryvdh/laravel-debugbar --dev
+php artisan ui bootstrap --auth
+npm install
+npm run dev
 
 //----------------------------------------------------------------------------------------
 

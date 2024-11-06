@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
     protected $namespace ='App\Http\Controllers'; //HECKT0R added this line so we dont need to mention namespace in every route file
 
 
